@@ -1,5 +1,8 @@
 slot-allocation = dynamic
 bubble-expire-timeout = 5sec
+bubble-prevent-fade = 0
+bubble-close-on-click = 1
+bubble-as-desktop-bg = 0
 bubble-vertical-gap = 3px
 bubble-horizontal-gap = 3px
 bubble-corner-radius = 37,5%
@@ -18,6 +21,3 @@ text-body-weight = normal
 text-body-color = eaeaea
 text-body-opacity = 100%
 text-shadow-opacity = 100%
-bubble-prevent-fade = 0
-bubble-close-on-click = 1
-bubble-as-desktop-bg = 0
