@@ -479,5 +479,5 @@ if has("autocmd")
   augroup END
 endif "}}}
 
-"""""""""""""""""""""""""""""""""""""""""""""}}}
-" vim:foldmethod=marker:foldlevel=0
+"""""""""""""""""""""""""""""""""""""""""""""
+"}}} vim:foldmethod=marker:foldlevel=0
