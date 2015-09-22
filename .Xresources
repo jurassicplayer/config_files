@@ -1,0 +1,13 @@
+! Xft Settings
+Xft.antialias: true
+Xft.rgba:      rgb
+Xft.hinting:   true
+Xft.hintstyle: hintslight
+
+! URxvt Settings
+URxvt*depth: 32
+URxvt*background: [75]#000000
+URxvt*foreground: #FFFFFF
+URxvt*transparent: false
+URxvt*scrollBar: false
+URxvt*font: xft:Terminess Powerline:regular:pixelsize=10

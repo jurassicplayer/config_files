@@ -1,0 +1,21 @@
+## Compositor ##
+compton &
+
+## Background ##
+nitrogen --restore &
+#sh ~/.fehbg &
+#xwinwrap -b -fs -nf -ni -ov -sp -- feh --bg-fill --randomize ~/project/simple-booru-paper/cache/
+
+## Panel ##
+(sleep 1 && tint2) &
+volumeicon &
+
+## Applications ##
+dbus-launch thunar --daemon &
+urxvtd &
+#mpd ~/.config/mpd/mpd.conf &
+#tilda &
+#(sleep 3 && synergy) &
+
+## Polkit ##
+#/usr/lib/lxpolkit/lxpolkit &
