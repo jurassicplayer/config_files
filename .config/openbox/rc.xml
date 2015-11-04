@@ -320,17 +320,27 @@
     </keybind>
     <keybind key="A-z">
       <action name="Execute">
-        <command>quodlibet --previous</command>
+        <command>~/.config/openbox/scripts/music_handler.sh prev</command>
       </action>
     </keybind>
     <keybind key="A-x">
       <action name="Execute">
-        <command>quodlibet --next</command>
+        <command>~/.config/openbox/scripts/music_handler.sh next</command>
       </action>
     </keybind>
     <keybind key="A-c">
       <action name="Execute">
-        <command>quodlibet --play-pause</command>
+        <command>~/.config/openbox/scripts/music_handler.sh toggle</command>
+      </action>
+    </keybind>
+    <keybind key="A-m">
+      <action name="Execute">
+        <command>~/.config/openbox/scripts/stream_mute.sh</command>
+      </action>
+    </keybind>
+    <keybind key="C-A-m">
+      <action name="Execute">
+        <command>~/.config/openbox/scripts/stream_mute.sh brb</command>
       </action>
     </keybind>
     <keybind key="C-A-v">

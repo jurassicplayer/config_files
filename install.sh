@@ -1,5 +1,20 @@
 #!/bin/bash
-if [[ $1 == "setup" ]]
+if [[ $1 == "pkg" ]]
+then
+    echo "Install packages:"
+    echo "cmus"
+    echo "dunst"
+    echo "mpd"
+    echo "ncmpcpp"
+    echo "obmenu-generator"
+    echo "openbox"
+    echo "ranger"
+    echo "tilda"
+    echo "tint2"
+    echo "tmux"
+    echo "vim"
+    echo "weechat"
+elif [[ $1 == "setup" ]]
 then
     echo "Setting up neobundle"
     curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh > neobundle.sh
@@ -7,6 +22,7 @@ then
     sh ./neobundle.sh
     
 elif [[$1 == "clean" ]]
+then
     if [[ -a "neobundle.sh" ]]; then rm "neobundle.sh"; fi
 else
     ls -a | while read f

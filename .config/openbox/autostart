@@ -13,8 +13,7 @@ volumeicon &
 ## Applications ##
 dbus-launch thunar --daemon &
 urxvtd &
-#mpd ~/.config/mpd/mpd.conf &
-#tilda &
+tilda &
 #(sleep 3 && synergy) &
 
 ## Polkit ##
