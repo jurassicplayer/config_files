@@ -1,19 +1,29 @@
-!""""""""""""""""""""""""""""""""""""""""""""
+! """""""""""""""""""""""""""""""""""""""""""
 ! Maintainer: Jurassicplayer
 ! Website: http://github.com/jurassicplayer
-! Version: 0.1 - 09/21/15
-!""""""""""""""""""""""""""""""""""""""""""""
-! Xft Settings {{{
+! Version: 0.2 - 11/04/15
+! """""""""""""""""""""""""""""""""""""""""""
+! => Version History {{{
+! """""""""""""""""""""""""""""""""""""""""""
+! v0.2 - Reorganized conf to something more sensible for viewing in vim (11/04/15)
+! v0.1 - Added URxvt and Xft settings (09/21/15)
+! """""""""""""""""""""""""""""""""""""""""""}}}
+! => Xft Settings {{{
+! """""""""""""""""""""""""""""""""""""""""""
 Xft.antialias: true
 Xft.rgba:      rgb
 Xft.hinting:   true
 Xft.hintstyle: hintslight
-! }}}
+
+! """""""""""""""""""""""""""""""""""""""""""}}}
 ! URxvt Settings {{{
+! """""""""""""""""""""""""""""""""""""""""""
 URxvt*depth: 32
 URxvt*background: [75]#000000
 URxvt*foreground: #FFFFFF
 URxvt*transparent: false
 URxvt*scrollBar: false
-URxvt*font: xft:Terminess Powerline:regular:pixelsize=10
+URxvt*font: xft:Terminess Powerline:regular:fontsize=13
+
+! """""""""""""""""""""""""""""""""""""""""""
 ! }}} vim:foldmethod=marker:foldlevel=0
