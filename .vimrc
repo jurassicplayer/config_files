@@ -1,11 +1,15 @@
 """""""""""""""""""""""""""""""""""""""""""""
 " Maintainer: Jurassicplayer
 " Website: http://github.com/jurassicplayer
-" Version: 1.0 - 09/21/15
+" Version: 1.4 - 10/23/15
 """""""""""""""""""""""""""""""""""""""""""""
 " => Version History {{{
 """""""""""""""""""""""""""""""""""""""""""""
-" v1.0 - Initial commit
+" v1.4 - Removed hexmode (limited uses) (10/23/15)
+" v1.3 - Separated colorscheme/added keymappings/disabled sourcing vim (10/15/15)
+" v1.2 - Enabled hidden buffers (10/12/15)
+" v1.1 - Disabled preview window
+" v1.0 - Initial commit (9/21/15)
 " v0.9 - Added/configured gundo plugin and added various keymappings
 " v0.8 - Configured unite plugin
 " v0.7 - Added neocomplete and unite plugins
@@ -55,11 +59,14 @@ NeoBundleCheck
 """""""""""""""""""""""""""""""""""""""""""""}}}
 " => General {{{        
 """"""""""""""""""""""""""""""""""""""""""""" 
-" Disable viminfo
+" Disable viminfo file usage
 set viminfo="NONE"
 
 " The number of lines of command history to remember
 set history=20
+
+" Enable hidden buffers (read/write file not required to swap buffers)
+set hidden
 
 " Autoread when a file is changed from an external program
 set autoread
@@ -88,7 +95,15 @@ let mapleader = ","
 " Quick access .vimrc
 nnoremap <leader>ev :e $MYVIMRC<cr>
 " Quick reload .vimrc
-nnoremap <leader>sv :source $MYVIMRC<cr>
+" nnoremap <leader>sv :source! $MYVIMRC<cr>
+" Quick access colorscheme
+nnoremap <leader>ec :e ~\/.vim\/colors\/weeaboository.vim<cr>
+" Quick reload colorscheme
+nnoremap <leader>sc :colorscheme weeaboository<cr>
+" Echo syntax highlighting group
+""nnoremap <leader>hl :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+""\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+""\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 " Quick navigation (quickfix/buffer/tab)
 map ]q :cnext<cr>
@@ -125,6 +140,8 @@ map <leader>p :setlocal paste!<cr>
 
 " Toggle folds
 nnoremap <tab> za
+" Close all folds
+nnoremap <leader><tab> zM
 
 """""""""""""""""""""""""""""""""""""""""""""}}}
 " => Vim UI {{{
@@ -149,6 +166,8 @@ set noshowmode
 " Always show the status line
 set laststatus=2
 
+set completeopt-=preview
+
 " Show a visual dmenu-like auto-complete
 set wildmenu
 set wildmode=longest:full,full
@@ -164,6 +183,9 @@ set number
 
 " Show current line/column position in file
 set noruler
+
+" Show current line cursorline
+set cursorline
 
 " Enable mouse if mouse support compiled
 if has('mouse')
@@ -188,22 +210,14 @@ set incsearch
 """""""""""""""""""""""""""""""""""""""""""""}}}
 " => Colors {{{
 """""""""""""""""""""""""""""""""""""""""""""
-try 
-    colorscheme desert
-catch
-endtry
-
-set background=dark
+colorscheme weeaboository
+set fillchars=stl:-,stlnc:-,vert:│
 
 " Use 256 colors in terminal
 if !has("gui_running")
     set t_Co=256
     set term=screen-256color
 endif
-
-" Highlight current line
-set cursorline
-hi CursorLine cterm=NONE ctermbg=24 ctermfg=white guibg=24 guifg=white
 
 """""""""""""""""""""""""""""""""""""""""""""}}}
 " => Files, Backups, Undo {{{
@@ -268,7 +282,7 @@ let g:airline_mode_map = {
 " Vim-Airline Theme
 let g:airline_theme='wombat'
 "}}}    
-" Vi    m-Airline Tabline {{{
+" Vim-Airline Tabline {{{
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#fnamemod = ':t'
 "}}}
@@ -276,7 +290,7 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_section_c = '%h%.30{getcwd()}'
 let g:airline_section_x = '%y%r[%l|%c]'
 let g:airline_section_y = '%{strftime("%D")}'
-let g:airline_section_z = '%{strftime("%I:%M %P")}'
+let g:airline_section_z = '%{strftime("%I:%M%P")}'
 "}}}}}}
 " NeoComplete Plugin {{{
 " Use autoComplpop?
@@ -380,104 +394,6 @@ function! DeleteTrailingWS()
 endfunction
 autocmd BufWrite *.py :call DeleteTrailingWS()
 """"""""""""""""""}}}
-" Hex Editor {{{
-""""""""""""""""""
-" Hex editor key bindings
-nnoremap <leader>h :Hexmode<cr>
-vnoremap <leader>h :<C-U>Hexmode<cr>
-
-" ex command for toggling hex mode - define mapping if desired
-command -bar Hexmode call ToggleHex()
-
-" helper function to toggle hex mode
-function ToggleHex()
-    " hex mode should be considered a read-only operation
-    " save values for modified and read-only for restoration later,
-    " and clear the read-only flag for now
-    let l:modified=&mod
-    let l:oldreadonly=&readonly
-    let &readonly=0
-    let l:oldmodifiable=&modifiable
-    let &modifiable=1
-    if !exists("b:editHex") || !b:editHex
-        " save old options
-        let b:oldft=&ft
-        let b:oldbin=&bin
-        " set new options
-        setlocal binary " make sure it overrides any textwidth, etc.
-        silent :e " this will reload the file without trickeries 
-                  "(DOS line endings will be shown entirely )
-        let &ft="xxd"
-        " set status
-        let b:editHex=1
-        " switch to hex editor
-        silent %!xxd
-    else
-        " restore old options
-        let &ft=b:oldft
-        if !b:oldbin
-            setlocal nobinary
-        endif
-        " set status
-        let b:editHex=0
-        " return to normal editing
-        silent %!xxd -r
-    endif
-    " restore values for modified and read only state
-    let &mod=l:modified
-    let &readonly=l:oldreadonly
-    let &modifiable=l:oldmodifiable
-endfunction
-
-" autocmds to automatically enter hex mode and handle file writes properly
-if has("autocmd")
-  " vim -b : edit binary using xxd-format!
-  augroup Binary
-    au!
-
-    " set binary option for all binary files before reading them
-    au BufReadPre *.bin,*.hex setlocal binary
-
-    " if on a fresh read the buffer variable is already set, it's wrong
-    au BufReadPost *
-          \ if exists('b:editHex') && b:editHex |
-          \   let b:editHex = 0 |
-          \ endif
-
-    " convert to hex on startup for binary files automatically
-    au BufReadPost *
-          \ if &binary | Hexmode | endif
-
-    " When the text is freed, the next time the buffer is made active it will
-    " re-read the text and thus not match the correct mode, we will need to
-    " convert it again if the buffer is again loaded.
-    au BufUnload *
-          \ if getbufvar(expand("<afile>"), 'editHex') == 1 |
-          \   call setbufvar(expand("<afile>"), 'editHex', 0) |
-          \ endif
-
-    " before writing a file when editing in hex mode, convert back to non-hex
-    au BufWritePre *
-          \ if exists("b:editHex") && b:editHex && &binary |
-          \  let oldro=&ro | let &ro=0 |
-          \  let oldma=&ma | let &ma=1 |
-          \  silent exe "%!xxd -r" |
-          \  let &ma=oldma | let &ro=oldro |
-          \  unlet oldma | unlet oldro |
-          \ endif
-
-    " after writing a binary file, if we're in hex mode, restore hex mode
-    au BufWritePost *
-          \ if exists("b:editHex") && b:editHex && &binary |
-          \  let oldro=&ro | let &ro=0 |
-          \  let oldma=&ma | let &ma=1 |
-          \  silent exe "%!xxd" |
-          \  exe "set nomod" |
-          \  let &ma=oldma | let &ro=oldro |
-          \  unlet oldma | unlet oldro |
-          \ endif
-  augroup END
-endif "}}}
 
 """""""""""""""""""""""""""""""""""""""""""""
 "}}} vim:foldmethod=marker:foldlevel=0
