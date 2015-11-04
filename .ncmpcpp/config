@@ -1,0 +1,357 @@
+#####################################################
+# Maintainer: Jurassicplayer
+# Website: http://github.com/jurassicplayer
+# Version: 0.2 - 10/13/15
+#####################################################
+# => Version History {{{
+#####################################################
+# v0.2 - Remap and set colors (10/13/15)
+# v0.1 - Initial settings (10/12/15)
+#####################################################}}}
+# => General {{{
+#####################################################
+## Directories {{{
+ncmpcpp_directory = "~/.ncmpcpp"
+lyrics_directory = "~/.ncmpcpp/lyrics"
+##}}}
+## Screen setup {{{
+## Screens available for use: help, playlist, browser, search_engine,
+## media_library, playlist_editor, tag_editor, outputs, visualizer, clock.
+screen_switcher_mode = playlist, browser, visualizer, clock
+startup_screen = "playlist"
+startup_slave_screen = ""
+startup_slave_screen_focus = no
+##}}}
+## Time delays {{{
+# Time of inactivity (in seconds) after playlist highlighting will be disabled (0 = always on)
+playlist_disable_highlight_delay = 5
+
+# Duration of message visibility
+message_delay_time = 5
+##}}}
+## Screen lock {{{
+# Default locked screen width (in %)
+locked_screen_width_part = 50
+
+# Always ask for locked screen width when setting manually.
+ask_for_locked_screen_width_part = yes
+##}}}
+## External utilities {{{
+# Execute script on song change
+execute_on_song_change = "~/.ncmpcpp/song_change.sh"
+
+# Editor
+external_editor = vim
+use_console_editor = yes
+
+# Lastfm language
+lastfm_preferred_language = en
+##}}}
+## Miscellanous {{{
+# Default encoding
+system_encoding = "utf-8"
+
+# If custom colors_enabled of tags are discarded if item is selected or not.
+discard_colors_if_item_is_selected = yes
+##}}}
+
+#####################################################}}}
+# => MPD {{{
+#####################################################
+mpd_host = localhost
+mpd_port = 6600
+mpd_connection_timeout = 5
+
+# Needed for tag editor
+mpd_music_dir = "~/Music"
+mpd_crossfade_time = 5
+
+#####################################################}}}
+# => ncmpcpp UI {{{
+#####################################################
+## User Interaction {{{
+# Mouse support
+mouse_support = "yes"
+mouse_list_scroll_whole_page = "no"
+
+# Navigation
+lines_scrolled = "1"
+cyclic_scrolling = "no"
+jump_to_now_playing_song_at_start = "yes"
+autocenter_mode = yes
+centered_cursor = yes
+ignore_leading_the = no
+
+# Seeking
+incremental_seeking = "yes"
+seek_time = "1"
+
+# Volume control
+volume_change_step = 2
+##}}}
+## Playlist {{{
+playlist_show_mpd_host = no
+playlist_show_remaining_time = no
+playlist_shorten_total_times = no
+playlist_separate_albums = no
+##}}}
+## Browse {{{
+# Available: name, mtime, format, noop 
+browser_sort_mode = name
+# Available values: add_remove, always_add.
+space_add_mode = add_remove
+# Able to delete files from the browser screen.
+allow_for_physical_item_deletion = no
+show_hidden_files_in_local_browser = no
+##}}}
+## Search {{{
+### Search modes {{{
+## Available:
+## - 1 - use mpd built-in searching (no regexes, pattern matching)
+## - 2 - use ncmpcpp searching (pattern matching with support for regexes,
+##       but if your mpd is on a remote machine, downloading big database
+##       to process it can take a while
+## - 3 - match only exact values (this mode uses mpd function for searching
+##       in database and local one for searching in current playlist)
+###}}}
+search_engine_default_search_mode = 1
+regular_expressions = "extended"
+
+# Available values: database, playlist.
+default_place_to_search_in = database
+data_fetching_delay = yes
+
+# Available values: wrapped, normal.
+default_find_mode = wrapped
+block_search_constraints_change_if_items_found = yes
+##}}}
+## Media Library{{{
+# Available values: artist, album_artist, date, genre, composer, performer.
+media_library_primary_tag = "album_artist"
+media_library_sort_by_mtime = no
+##}}}
+## Playlist Editor {{{
+ask_before_clearing_playlists = yes
+##}}}
+## Lyrics {{{
+follow_now_playing_lyrics = no
+fetch_lyrics_for_current_song_in_background = no
+store_lyrics_in_song_dir = no
+generate_win32_compatible_filenames = yes
+##}}}
+## Tag Editor {{{
+default_tag_editor_pattern = %n - %t
+empty_tag_marker = <empty>
+tags_separator = " | "
+tag_editor_extended_numeration = no
+##}}}
+
+#####################################################}}}
+# => Appearance {{{
+#####################################################
+## Enabled UI Elements {{{
+enable_window_title = yes
+
+header_visibility = "no"
+statusbar_visibility = "no"
+titles_visibility = "no"
+header_text_scrolling = "yes"
+
+display_volume_level = yes
+display_bitrate = no
+display_remaining_time = no
+clock_display_seconds = no
+##}}}
+## Display mode {{{
+## Available: classic, alternative.
+user_interface = alternative
+## Available: classic, columns.
+playlist_display_mode = columns
+browser_display_mode = classic
+search_engine_display_mode = classic
+playlist_editor_display_mode = classic
+##}}}
+## String Format {{{
+### Song format {{{
+## %l - length
+## %f - filename
+## %D - directory
+## %a - artist
+## %A - album artist
+## %t - title
+## %b - album
+## %y - date
+## %n - track number (01/12 -> 01)
+## %N - full track info (01/12 -> 01/12)
+## %g - genre
+## %c - composer
+## %p - performer
+## %d - disc
+## %C - comment
+## %P - priority
+## $R - begin right alignment
+##
+## you can also put them in { } and then it will be displayed
+## only if all requested values are available and/or define alternate
+## value with { }|{ } eg. {%a - %t}|{%f}
+##
+## Note: If you want to set limit on maximal length of a tag, just
+## put the appropriate number between % and character that defines
+## tag type, e.g. to make album take max. 20 terminal cells, use '%20b'.
+##
+## Note: Format that is similar to "%a - %t" (i.e. without any additional
+## braces) is equal to "{%a - %t}", so if one of the tags is missing,
+## you'll get nothing.
+##
+## text can also have different color than the main window has,
+## eg. if you want length to be green, write "$3%l$9".
+##
+## Available:
+## - 0 - default window color
+## - 1 - black
+## - 2 - red
+## - 3 - green
+## - 4 - yellow
+## - 5 - blue
+## - 6 - magenta
+## - 7 - cyan
+## - 8 - white
+## - 9 - end of current color
+## Note: colors can be nested.
+##
+## Note: Below variables are for alternative version of user's interface.
+## Their syntax supports all tags and colors listed above plus some extra
+## markers used for text attributes. They are followed by character '$'.
+## After that you can put:
+##
+## - b - bold text
+## - u - underline text
+## - r - reverse colors
+## - a - use alternative character set
+##
+## If you don't want to use an attribute anymore, just put it again, but
+## this time insert character '/' between '$' and attribute character,
+## e.g. {$b%t$/b}|{$r%f$/r} will display bolded title tag or filename
+## with reversed colors.
+##}}}
+### Column format {{{
+## (width of column)[column's color]{displayed tag}
+##
+## Note: Width is by default in %, if you want a column to
+## have fixed size, add 'f' after the value, e.g. (10)[white]{a}
+## will be the column that take 10% of screen (so the real column's
+## width will depend on actual screen size), whereas (10f)[white]{a}
+## will take 10 terminal cells, no matter how wide the screen is.
+##
+## - color is optional (if you want the default one, type [])
+##
+## Note: You can give a column additional attributes by putting appropriate
+## character after displayed tag character. Available attributes are:
+##
+## - r - column will be right aligned
+## - E - if tag is empty, empty tag marker won't be displayed
+##
+## You can also:
+## - give a column custom name by putting it after attributes,
+##   separated with character ':', e.g. {lr:Length} gives you
+##   right aligned column of lengths named "Length".
+##
+## - define sequence of tags, that have to be displayed in case
+##   predecessor is empty in a way similar to the one in classic
+##   song format, i.e. using '|' character, e.g. {a|c|p:Owner}
+##   creates column named "Owner" that tries to display artist
+##   tag and then composer and performer if previous ones are
+##   not available.
+##}}}
+song_columns_list_format = (30)[]{A|b|aE:Album/Artist} (60)[]{t|f:Title} (7f)[]{l}
+song_list_format = {%a - }{%t}|{%f}$R{%l}
+song_status_format = {{%a{ "%b"} - }{%t}}|{%f}
+song_library_format = {%t}|{%f}
+alternative_header_first_line_format = $b$1$aqqu$/a$9 {%t}|{%f} $1$atqq$/a$9$/b
+alternative_header_second_line_format = $b$1$aqqu$/a$9 {{$b%b$/b - }{$b%a$/b}}|{%D} $b$1$atqq$/a$9
+browser_sort_format = {%b - %a - }{%t}|{%f} {(%l)}
+song_window_title_format = {%a - }{%t}|{%f}
+##}}}
+## Strings {{{
+now_playing_prefix = "$b$(white_62)> "
+now_playing_suffix = "$/b$9"
+browser_playlist_prefix = "$7playlist$9 "
+selected_item_prefix = "$(183)*"
+selected_item_suffix = "$9"
+modified_item_prefix = $3> $9
+progressbar_look = "───"
+progressbar_boldness = yes
+##}}}
+
+#####################################################}}}
+# => Colors {{{
+#####################################################
+colors_enabled = yes
+## Header {{{
+# main header color #
+header_window_color = 250
+# Vol: 40% #
+volume_color = default
+# [rz--x-] #
+state_flags_color = default
+# header bar separators #
+alternative_ui_separator_color = 242
+
+# Color of lines separating header and statusbar from main window #
+state_line_color = red
+##}}}
+## Window {{{
+# main predominant color #
+main_window_color = 245
+
+# highlighted white txt on blue bg #
+main_window_highlight_color = 25_white
+window_border_color = default
+active_window_border = red
+
+# song info, tiny tag editor, and search #
+color1 = green
+color2 = green
+
+# media library column #
+active_column_color = cyan
+
+# <empty> #
+empty_tag_color = cyan
+
+# color of the statusbar
+statusbar_color = default
+##}}}
+## Progressbar {{{
+# --- #
+progressbar_color = black
+# --> #
+progressbar_elapsed_color = white
+##}}}
+
+#####################################################}}}
+# => Visualizer {{{
+#####################################################
+## Visualizer Settings {{{
+# Defined in mpd.conf
+visualizer_fifo_path = /tmp/mpd.fifo
+visualizer_output_name = Visualizer feed
+visualizer_in_stereo = yes
+
+# Visualizer sample multiplier (for quiet songs)
+visualizer_sample_multiplier = 1
+
+# Interval, in seconds, until re-syncing ncmpcpp and mpd
+visualizer_sync_interval = 30
+##}}}
+## Visualizer Appearance {{{
+# Visual type: spectrum, wave, wave_filled, ellipse
+# note: spectrum requires ncmpcpp compiled with fftw3
+visualizer_type = spectrum
+visualizer_look = ●▮
+#visualizer_color = blue, cyan, green, yellow, magenta, red
+visualizer_color = 41, 83, 119, 155, 185, 215, 209, 203, 197, 161
+##}}}
+
+#####################################################
+#}}} vim:foldmethod=marker:foldlevel=0
