@@ -14,6 +14,7 @@ then
     echo "tmux"
     echo "vim"
     echo "weechat"
+    echo "Copy irc.conf for weechat, add keys for live streams, vimwiki"
 elif [[ $1 == "setup" ]]
 then
     echo "Setting up neobundle"
