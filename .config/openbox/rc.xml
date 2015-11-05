@@ -315,7 +315,7 @@
     <!-- Keybindings for running applications -->
     <keybind key="F2">
       <action name="Execute">
-        <command>bashrun2</command>
+        <command>dmenu_run -fn "Terminess Powerline-9" -dim 0.5 -nb "#262626" -nf "#cccccc" -sb "#005f87" -sf "#ffffff"</command>
       </action>
     </keybind>
     <keybind key="A-z">
