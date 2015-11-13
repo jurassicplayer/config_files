@@ -422,7 +422,7 @@ def a_notify(notification, title, description, priority="URGENCY_LOW"):
         #wn.set_timeout(time_out)
         #wn.show()
         with open(os.devnull, "w") as f:
-            s.call(['notify-send', title, description], stdout=f, stderr=subprocess.STDOUT)
+            s.call(['notify-send', title, description], stdout=f, stderr=s.STDOUT)
     except Exception as error:
         weechat.prnt('', 'anotify: {0}'.format(error))
 
