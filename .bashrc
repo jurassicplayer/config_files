@@ -26,4 +26,4 @@ alias paccache='pacaur -Sc'
 alias dmenu_run='dmenu_run -fn "Terminess Powerline-9" -dim 0.5 -nb "#262626" -nf "#cccccc" -sb "#005f87" -sf "#ffffff"'
 
 # Streaming script
-alias stream='~/.config/openbox/scripts/streamer.sh'
+alias stream='~/.config/openbox/scripts/stream.sh stream'

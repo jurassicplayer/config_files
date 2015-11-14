@@ -335,12 +335,12 @@
     </keybind>
     <keybind key="A-m">
       <action name="Execute">
-        <command>~/.config/openbox/scripts/stream_mute.sh</command>
+        <command>~/.config/openbox/scripts/stream.sh audio</command>
       </action>
     </keybind>
     <keybind key="C-A-m">
       <action name="Execute">
-        <command>~/.config/openbox/scripts/stream_mute.sh brb</command>
+        <command>~/.config/openbox/scripts/stream.sh audio brb</command>
       </action>
     </keybind>
     <keybind key="C-A-v">
