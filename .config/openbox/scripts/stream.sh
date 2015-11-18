@@ -95,7 +95,7 @@ audio_toggle_mute() {
     if [ ! -e $toggle ];then
         case $1 in
             brb)
-                notify-send "BRB" "Processing life, back in a moment..."
+                notify-send "DUNST_COMMAND_PAUSE"
                 ((echo "# Auto-kill Live Stream: 5 min(s)" && echo "0" && \
                     sleep 0.2 && wmctrl -a Brb, Processing Life... -e 0,-1,60,-1,-1 && wmctrl -R Brb, Processing Life... -b add,above && \
                     sleep 60 && echo "# Auto-kill Live Stream: 4 min(s)" && echo "20" && \
@@ -125,6 +125,7 @@ audio_toggle_mute() {
     else
         if [ -s $toggle ]; then
             notify-send "BRB" "...and we're back."
+            notify-send "DUNST_COMMAND_RESUME"
             for i in $(cat $toggle); do
                 pkill -TERM -P $i
                 kill -kill $i
