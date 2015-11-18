@@ -48,7 +48,8 @@ ffmpeg_stream() {
     -b:v $CBR -minrate $CBR -maxrate $CBR -profile:v $PROFILE \
     -level $PROFILE_LEVEL -pix_fmt yuv420p -s $OUTRES -tune zerolatency \
     -acodec $AUDIO_CODEC -threads $THREADS -strict experimental -bufsize $CBR \
-    "${SERVER}" >`dirname $0`/ffmpeg_stream.log 2>&1 
+    "${SERVER}" >`dirname $0`/ffmpeg_stream.log 2>&1
+    notify-send --urgency critical "FFMpeg" "Stream has ended."
 }
 
 audio_setup() {
@@ -119,7 +120,7 @@ audio_toggle_mute() {
                 ;;
         esac
         grab_inputs "list-sources" "device.class"
-        for entry in $INPUT_ARRAY; do
+        for entry in ${INPUT_ARRAY[@]}; do
             pacmd set-source-mute $entry 1
         done
     else
@@ -135,7 +136,7 @@ audio_toggle_mute() {
         fi
         rm $toggle
         grab_inputs "list-sources" "device.class"
-        for entry in $INPUT_ARRAY; do
+        for entry in ${INPUT_ARRAY[@]}; do
             pacmd set-source-mute $entry 0
         done
     fi
@@ -206,6 +207,7 @@ zenity_window() {
     local list_type=$1
     local text=$2
     local zenity_list=("${INPUT_ARRAY[@]}")
+    (sleep 0.3 && wmctrl -R "Select Audio Stream" -b add,above)&
     RESULT=$(zenity \
         --list \
         --$list_type \
