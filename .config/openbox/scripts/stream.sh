@@ -109,7 +109,7 @@ audio_toggle_mute() {
                     --text="Automatic-Kill Live Stream (5min)" \
                     --percentage=0 \
                     --auto-close \
-                    --no-cancel >/dev/null 2>&1)&
+                    --no-cancel >/dev/null 2>&1 )&
                 echo $! > $toggle
                 (feh -x --hide-pointer $brbscrn)&
                 echo $! >> $toggle
