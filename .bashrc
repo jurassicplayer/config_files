@@ -10,17 +10,16 @@ PS1='[\@ \W]\$> '
 
 # Reload .Xresources
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
-# Start mpd
-[ ! -s ~/.config/mpd/pid ] && mpd
 
 # colorized aliases
 alias grep='grep --color=auto'
 alias ls='ls --color=auto'
 
 # pacman aliases
-alias pacorphan='pacaur -Qtdq > /dev/null && pacaur -Rns \$(pacaur -Qtdq | sed -e ":a;N;\$!ba;s/\n/ /g")'
-alias pacpkg='pacaur -Qe'
+alias pacorphan='pacaur -Rns $(pacaur -Qtdq)'
+alias pacpkg='pacaur -Qe >> packagelist.txt ; pacaur -Qe'
 alias paccache='pacaur -Sc'
+alias pacreflect='sudo reflector --verbose --country "United States" -l 200 -p http --sort rate --save /etc/pacman.d/mirrorlist'
 
 # dmenu configuration
 alias dmenu_run='dmenu_run -fn "Terminess Powerline-9" -dim 0.5 -nb "#262626" -nf "#cccccc" -sb "#005f87" -sf "#ffffff"'
