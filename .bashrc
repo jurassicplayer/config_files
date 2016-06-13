@@ -8,6 +8,9 @@
 # Custom bash prompt
 PS1='[\@ \W]\$> '
 
+# Fim font
+export FBFONT=/usr/share/kbd/consolefonts/ter-216n.psf.gz
+
 # Reload .Xresources
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 
