@@ -17,14 +17,8 @@ then
     echo "Copy irc.conf for weechat, add keys for live streams, vimwiki"
 elif [[ $1 == "setup" ]]
 then
-    echo "Setting up neobundle"
-    curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh > neobundle.sh
-    chmod +x neobundle.sh
-    sh ./neobundle.sh
-    
-elif [[$1 == "clean" ]]
-then
-    if [[ -a "neobundle.sh" ]]; then rm "neobundle.sh"; fi
+    echo "Setting up vim-plug"
+    curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 else
     ls -a | while read f
     do
