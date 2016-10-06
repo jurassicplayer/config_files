@@ -2,9 +2,9 @@
 compton &
 
 ## Background ##
-nitrogen --restore &
+#nitrogen --restore &
 #sh ~/.fehbg &
-#xwinwrap -b -fs -nf -ni -ov -sp -- feh --bg-fill --randomize ~/project/simple-booru-paper/cache/
+xwinwrap -b -fs -nf -ni -ov -sp -- feh --bg-fill --randomize --no-fehbg ~/Images/Wallpaper &
 
 ## Panel ##
 (sleep 1 && tint2) &
@@ -13,7 +13,7 @@ volumeicon &
 ## Applications ##
 dbus-launch thunar --daemon &
 urxvtd &
-#mpd ~/.config/mpd/mpd.conf &
+mpd &
 tilda &
 #(sleep 3 && synergy) &
 
