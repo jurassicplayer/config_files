@@ -1,10 +1,11 @@
 !""""""""""""""""""""""""""""""""""""""""""""
 ! Maintainer: Jurassicplayer
 ! Website: http://github.com/jurassicplayer
-! Version: 0.2 - 11/04/15
+! Version: 0.3 - 06/14/16
 !""""""""""""""""""""""""""""""""""""""""""""
 ! => Version History {{{
 !""""""""""""""""""""""""""""""""""""""""""""
+! v0.3 - Changed URxvt background color to #282828 (06/14/16) 
 ! v0.2 - Reorganized conf to something more sensible for viewing in vim (11/04/15)
 ! v0.1 - Added URxvt and Xft settings (09/21/15)
 !""""""""""""""""""""""""""""""""""""""""""""}}}
@@ -19,7 +20,7 @@ Xft.hintstyle: hintslight
 ! URxvt Settings {{{
 !""""""""""""""""""""""""""""""""""""""""""""
 URxvt*depth: 32
-URxvt*background: [75]#000000
+URxvt*background: [75]#282828
 URxvt*foreground: #FFFFFF
 URxvt*transparent: false
 URxvt*scrollBar: false
