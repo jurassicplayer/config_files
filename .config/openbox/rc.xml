@@ -398,8 +398,14 @@
         <action name="Focus"/>
         <action name="Raise"/>
       </mousebind>
+      <mousebind button="Middle" action="Drag">
+        <action name="Move"/>
+      </mousebind>
       <mousebind button="A-Left" action="Click">
         <action name="Unshade"/>
+      </mousebind>
+      <mousebind button="A-Left" action="Drag">
+        <action name="Move"/>
       </mousebind>
       <mousebind button="W-Left" action="Drag">
         <action name="Move"/>
@@ -408,6 +414,9 @@
         <action name="Focus"/>
         <action name="Raise"/>
         <action name="Unshade"/>
+      </mousebind>
+      <mousebind button="A-Right" action="Drag">
+        <action name="Resize" />
       </mousebind>
       <mousebind button="W-Right" action="Drag">
         <action name="Resize"/>
