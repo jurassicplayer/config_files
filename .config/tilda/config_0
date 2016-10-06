@@ -1,4 +1,4 @@
-tilda_config_version="1.3~rc1"
+tilda_config_version="1.3.3"
 command="/usr/bin/tmux new-session -A -s tilda"
 font="Terminess Powerline 8"
 key="Mail"
