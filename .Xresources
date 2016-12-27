@@ -1,10 +1,11 @@
 !""""""""""""""""""""""""""""""""""""""""""""
 ! Maintainer: Jurassicplayer
 ! Website: http://github.com/jurassicplayer
-! Version: 0.3 - 06/14/16
+! Version: 0.4 - 12/26/16
 !""""""""""""""""""""""""""""""""""""""""""""
 ! => Version History {{{
 !""""""""""""""""""""""""""""""""""""""""""""
+! v0.4 - Added Rofi config (12/26/16)
 ! v0.3 - Changed URxvt background color to #282828 (06/14/16) 
 ! v0.2 - Reorganized conf to something more sensible for viewing in vim (11/04/15)
 ! v0.1 - Added URxvt and Xft settings (09/21/15)
@@ -25,6 +26,28 @@ URxvt*foreground: #FFFFFF
 URxvt*transparent: false
 URxvt*scrollBar: false
 URxvt*font: xft:Terminess Powerline:regular:fontsize=13
+
+!""""""""""""""""""""""""""""""""""""""""""""}}}
+! Rofi {{{
+!""""""""""""""""""""""""""""""""""""""""""""
+! Settings {{{
+rofi.modi: drun,window,run
+rofi.opacity: 100
+rofi.width: 100
+rofi.lines: 10
+rofi.columns: 4
+rofi.font: Terminess Powerline 9
+rofi.bw: 0
+rofi.location: 1
+rofi.padding: 3
+!}}}
+! Theme {{{
+rofi.color-enabled: true
+rofi.color-window: #303030, #000000, #555555
+rofi.color-normal: #151515, #909090, #202020, #00C778, #FFFFFF
+rofi.color-urgent: #BD5463, #FFFFFF, #F28581, #FF3075, #FFFFFF
+rofi.color-active: #F28581, #FFFFFF, #BD5463, #FF3075, #FFFFFF
+!}}}
 
 !""""""""""""""""""""""""""""""""""""""""""""
 ! }}} vim:foldmethod=marker:foldlevel=0
