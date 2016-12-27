@@ -347,7 +347,8 @@
     </keybind>
     <keybind key="F2">
       <action name="Execute">
-        <command>dmenu_run -fn "Terminess Powerline-9" -dim 0.5 -nb "#262626" -nf "#cccccc" -sb "#005f87" -sf "#ffffff"</command>
+        <!-- <command>dmenu_run -fn "Terminess Powerline-9" -dim 0.5 -nb "#262626" -nf "#cccccc" -sb "#005f87" -sf "#ffffff"</command> -->
+        <command>rofi -show</command>
       </action>
     </keybind>
     <keybind key="A-z">
