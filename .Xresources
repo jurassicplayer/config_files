@@ -25,7 +25,7 @@ URxvt*background: [75]#282828
 URxvt*foreground: #FFFFFF
 URxvt*transparent: false
 URxvt*scrollBar: false
-URxvt*font: xft:Terminess Powerline:regular:fontsize=13
+URxvt*font: xft:xos4 Terminess Powerline:regular:fontsize=13
 
 !""""""""""""""""""""""""""""""""""""""""""""}}}
 ! Rofi {{{
@@ -36,7 +36,7 @@ rofi.opacity: 100
 rofi.width: 100
 rofi.lines: 10
 rofi.columns: 4
-rofi.font: Terminess Powerline 9
+rofi.font: xos4 Terminess Powerline 9
 rofi.bw: 0
 rofi.location: 1
 rofi.padding: 3
