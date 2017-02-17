@@ -28,7 +28,7 @@ alias pacreflect='sudo reflector --verbose --country "United States" -l 200 -p h
 alias dmenu_run='dmenu_run -fn "Terminess Powerline-9" -dim 0.5 -nb "#262626" -nf "#cccccc" -sb "#005f87" -sf "#ffffff"'
 
 # Streaming script
-alias stream='~/.config/openbox/scripts/stream.sh stream'
+alias stream='~/.config/openbox/scripts/stream.sh'
 
 # Misc
 alias steam_clean='find ~/.steam/root/ \( -name "libgcc_s.so*" -o -name "libstdc++.so*" -o -name "libxcb.so*" -o -name "libgpg-error.so*" \) -print -delete; find ~/.local/share/Steam/ \( -name "libgcc_s.so*" -o -name "libstdc++.so*" -o -name "libxcb.so*" -o -name "libgpg-error.so*" \) -print -delete'

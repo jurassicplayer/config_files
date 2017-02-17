@@ -1,6 +1,7 @@
 #!/bin/bash
 
 stream_setup() {
+    echo "Setup stream"
     INRES="1366x768" # input resolution
     OUTRES="1366x768" # output resolution
     POS="0,0" # top-left corner of capture window
@@ -43,6 +44,7 @@ stream_setup() {
     esac
 }
 ffmpeg_stream() {
+    echo "Started FFMpeg stream"
     ffmpeg -f x11grab -s "$INRES" -r "$FPS" -i :0.0+${POS} -f alsa -i pulse \
     -f flv -ac 2 -ar $AUDIO_RATE -vcodec libx264 -g $GOP -keyint_min $GOPMIN \
     -b:v $CBR -minrate $CBR -maxrate $CBR -profile:v $PROFILE \
@@ -53,6 +55,7 @@ ffmpeg_stream() {
 }
 
 audio_setup() {
+    echo "Setup audio"
     ## Set Applications
     grab_inputs "list-sink-inputs" "application.name"
     zenity_window "checklist" "Select recorded applications:" "TRUE"
@@ -90,6 +93,7 @@ audio_setup() {
 }
 
 audio_toggle_mute() {
+    echo "Toggle audio"
     local dir=`dirname "$0"`
     local toggle=$dir/stream_muted
     local brbscrn=$dir/brb_screen.png
@@ -143,6 +147,7 @@ audio_toggle_mute() {
 }
 
 audio_cleanup() {
+    echo "Cleanup audio"
     if [[ -n $LOOPBACK_CAUDIO_OUT ]] || [[ -n $LOOPBACK_CAUDIO_IN ]] || [[ -n $LOOPBACK_MIC ]] || [[ -n $SINK_DUPLEX ]] || [[ -n $SINK_CAUDIO ]]; then
         if [[ -n $LOOPBACK_CAUDIO_OUT ]]; then 
             pactl unload-module "$LOOPBACK_CAUDIO_OUT"
@@ -233,13 +238,14 @@ stream() {
     audio_cleanup
 }
 
-if [[ $1 == 'stream' ]]; then
-    if [[ $2 == 'clean' ]]; then
-        audio_cleanup
-    else
-        stream $2
-    fi
+if [[ $1 == 'radio' ]]; then
+    echo "radio"
+    audio_setup
+elif [[ $1 == 'clean' ]]; then
+    audio_cleanup
 elif [[ $1 == 'audio' ]]; then
     audio_toggle_mute $2
+else
+    stream $1
 fi
 
