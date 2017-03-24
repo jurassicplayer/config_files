@@ -29,10 +29,10 @@ my $editor = $CONFIG->{editor};
 our $SCHEMA = [
     {sep => 'Menu'},
     #          COMMAND                 LABEL                ICON
-    {item => ['xdg-open .',           'File',          'file-manager']},
+    {item => ['exo-open .',           'File',          'file-manager']},
     {item => ['urxvt',                'Term',          'terminal']},
-    {item => ['xdg-open http:',       'Web',           'web-browser']},
-    {item => ['dmenu_run',            'Run',           'system-run']},
+    {item => ['exo-open http://',     'Web',           'web-browser']},
+    {item => ['rofi -show',           'Run',           'system-run']},
     {sep => undef},
 
     #          NAME            LABEL                ICON

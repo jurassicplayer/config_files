@@ -1,0 +1,24 @@
+#!/bin/bash
+## Compositor ##
+compton &
+
+## Background ##
+#nitrogen --restore &
+#sh ~/.fehbg &
+xwinwrap -b -fs -nf -ni -ov -sp -- feh --bg-fill --randomize --no-fehbg ~/Images/Wallpaper &
+
+## Panel ##
+(sleep 1 && tint2) &
+dunst &
+volctl &
+
+## Applications ##
+dbus-launch thunar --daemon &
+urxvtd &
+mpd &
+tilda &
+tmux new-session -s ngrok -d ngrok tcp 22 --log false &
+#(sleep 3 && synergy) &
+
+## Polkit ##
+#/usr/lib/lxpolkit/lxpolkit &

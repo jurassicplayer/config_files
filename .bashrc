@@ -11,8 +11,11 @@ PS1='[\@ \W]\$> '
 # Fim font
 export FBFONT=/usr/share/kbd/consolefonts/ter-216n.psf.gz
 
-# Reload .Xresources
-[[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
+# Set "Desktop Environment" for xdg-open
+export DE=xfce
+
+# Test Awesome environment
+alias va='Xephyr :1 -ac -br -noreset -screen 800x600 & sleep 3 & DISPLAY=:1.0 dbus-launch awesome -c ~/.config/awesome/rc.lua'
 
 # colorized aliases
 alias grep='grep --color=auto'
@@ -25,7 +28,7 @@ alias paccache='pacaur -Sc'
 alias pacreflect='sudo reflector --verbose --country "United States" -l 200 -p http --sort rate --save /etc/pacman.d/mirrorlist'
 
 # dmenu configuration
-alias dmenu_run='dmenu_run -fn "Terminess Powerline-9" -dim 0.5 -nb "#262626" -nf "#cccccc" -sb "#005f87" -sf "#ffffff"'
+#alias dmenu_run='dmenu_run -fn "Terminess Powerline-9" -dim 0.5 -nb "#262626" -nf "#cccccc" -sb "#005f87" -sf "#ffffff"'
 
 # Streaming script
 alias stream='~/.config/openbox/scripts/stream.sh'
