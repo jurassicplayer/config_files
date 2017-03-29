@@ -93,5 +93,5 @@ our $CONFIG = {
   "missing_icon"        => "gtk-missing-image",
   "name_keys"           => ["Name"],
   "terminal"            => "urxvt",
-  "VERSION"             => 0.69,
+  "VERSION"             => 0.7,
 }

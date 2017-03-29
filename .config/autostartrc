@@ -9,16 +9,19 @@ xwinwrap -b -fs -nf -ni -ov -sp -- feh --bg-fill --randomize --no-fehbg ~/Images
 
 ## Panel ##
 (sleep 1 && tint2) &
-dunst &
 volctl &
 
 ## Applications ##
-dbus-launch thunar --daemon &
+dunst &
 urxvtd &
 mpd &
 tilda &
-tmux new-session -s ngrok -d ngrok tcp 22 --log false &
+dbus-launch thunar --daemon &
 #(sleep 3 && synergy) &
+
+## Remote Connection ##
+crd &
+tmux new-session -s ngrok -d ngrok tcp 22 --log false &
 
 ## Polkit ##
 #/usr/lib/lxpolkit/lxpolkit &
