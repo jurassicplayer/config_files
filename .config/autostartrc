@@ -1,27 +1,29 @@
 #!/bin/bash
-## Compositor ##
-compton &
 
 ## Background ##
 #nitrogen --restore &
 #sh ~/.fehbg &
 xwinwrap -b -fs -nf -ni -ov -sp -- feh --bg-fill --randomize --no-fehbg ~/Images/Wallpaper &
 
+## Compositor ##
+compton &
+
 ## Panel ##
 (sleep 1 && tint2) &
 volctl &
 
 ## Applications ##
+mpd &
 dunst &
 urxvtd &
-mpd &
 tilda &
 dbus-launch thunar --daemon &
 #(sleep 3 && synergy) &
+sh ~/.conky/conky-startup.sh &
 
 ## Remote Connection ##
-crd &
-tmux new-session -s ngrok -d ngrok tcp 22 --log false &
+#crd --start &
+#tmux new-session -s ngrok -d ngrok tcp 22 --log false &
 
 ## Polkit ##
 #/usr/lib/lxpolkit/lxpolkit &
