@@ -8,6 +8,9 @@
 # Custom bash prompt
 PS1='[\@ \W]\$> '
 
+# Add undistract-me
+source /usr/share/undistract-me/long-running.bash;notify_when_long_running_commands_finish_install
+
 # Fim font
 export FBFONT=/usr/share/kbd/consolefonts/ter-216n.psf.gz
 
@@ -29,6 +32,9 @@ alias pacreflect='sudo reflector --verbose --country "United States" -l 200 -p h
 
 # dmenu configuration
 #alias dmenu_run='dmenu_run -fn "Terminess Powerline-9" -dim 0.5 -nb "#262626" -nf "#cccccc" -sb "#005f87" -sf "#ffffff"'
+
+# Remote Connection
+alias remote='~/.config/openbox/scripts/remote.sh'
 
 # Streaming script
 alias stream='~/.config/openbox/scripts/stream.sh'
