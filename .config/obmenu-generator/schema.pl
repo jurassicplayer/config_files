@@ -72,6 +72,7 @@ our $SCHEMA = [
     {begin_cat => ['Adv', 'gnome-settings']},
 
         # Configuration files
+        {item      => ["$editor ~/.config/autostartrc",   'Autostart',   $editor]},
         {item      => ["$editor ~/.conkyrc",              'Conky RC',    $editor]},
 
         # obmenu-generator category
@@ -92,7 +93,6 @@ our $SCHEMA = [
         # Openbox category
         {begin_cat => ['Openbox', 'openbox']},
             {item      => ['openbox --reconfigure',               'Reconfigure Openbox', 'openbox']},
-            {item      => ["$editor ~/.config/openbox/autostart", 'Openbox Autostart',    $editor]},
             {item      => ["$editor ~/.config/openbox/rc.xml",    'Openbox RC',           $editor]},
             {item      => ["$editor ~/.config/openbox/menu.xml",  'Openbox Menu',         $editor]},
         {end_cat => undef},
