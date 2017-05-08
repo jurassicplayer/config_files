@@ -1,10 +1,11 @@
 !""""""""""""""""""""""""""""""""""""""""""""
 ! Maintainer: Jurassicplayer
 ! Website: http://github.com/jurassicplayer
-! Version: 0.4 - 12/26/16
+! Version: 0.5 - 04/27/17
 !""""""""""""""""""""""""""""""""""""""""""""
 ! => Version History {{{
 !""""""""""""""""""""""""""""""""""""""""""""
+! v0.5 - Lowered URXVT fontsize by 1
 ! v0.4 - Added Rofi config (12/26/16)
 ! v0.3 - Changed URxvt background color to #282828 (06/14/16) 
 ! v0.2 - Reorganized conf to something more sensible for viewing in vim (11/04/15)
@@ -25,7 +26,7 @@ URxvt*background: [75]#282828
 URxvt*foreground: #FFFFFF
 URxvt*transparent: false
 URxvt*scrollBar: false
-URxvt*font: xft:xos4 Terminess Powerline:regular:fontsize=13
+URxvt*font: xft:xos4 Terminess Powerline:regular:fontsize=12
 
 !""""""""""""""""""""""""""""""""""""""""""""}}}
 ! Rofi {{{
