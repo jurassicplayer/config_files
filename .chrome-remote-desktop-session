@@ -1,0 +1,10 @@
+# You will have to uncomment one of the following lines for CRD to work
+# Remove the # and select ctrl-X to finish.
+# 
+unset PULSE_CONFIG_PATH
+unset PULSE_RUNTIME_PATH
+unset PULSE_SINK
+unset PULSE_STATE_PATH
+export DE=chrome
+exec /usr/bin/openbox-session
+# exec /usr/bin/openbox-kde-session
