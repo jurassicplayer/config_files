@@ -10,17 +10,18 @@ compton &
 
 ## Panel ##
 (sleep 1 && tint2) &
-volctl &
+if [ "$DE" != "chrome" ]; then
+    volctl &
 
-## Applications ##
-mpd &
-dunst &
-urxvtd &
-tilda &
-dbus-launch thunar --daemon &
-#(sleep 3 && synergy) &
-sh ~/.conky/conky-startup.sh &
-
+    ## Applications ##
+    mpd &
+    dunst &
+    urxvtd &
+    tilda &
+    dbus-launch thunar --daemon &
+    #(sleep 3 && synergy) &
+    sh ~/.conky/conky-startup.sh &
+fi
 ## Remote Connection ##
 #crd --start &
 #tmux new-session -s ngrok -d ngrok tcp 22 --log false &
