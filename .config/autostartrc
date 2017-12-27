@@ -11,16 +11,19 @@ compton &
 ## Panel ##
 (sleep 1 && tint2) &
 if [ "$DE" != "chrome" ]; then
-    volctl &
+    volumeicon &
 
     ## Applications ##
     mpd &
-    dunst &
+    #dunst &
+    /usr/lib/xfce4/notifyd/xfce4-notifyd
     urxvtd &
     tilda &
     dbus-launch thunar --daemon &
     #(sleep 3 && synergy) &
-    sh ~/.conky/conky-startup.sh &
+    #sh ~/.conky/conky-startup.sh &
+    parcellite &
+    dropbox &
 fi
 ## Remote Connection ##
 #crd --start &
