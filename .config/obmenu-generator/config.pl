@@ -8,53 +8,27 @@
 
 || FILTERING
     | skip_filename_re    : Skip a .desktop file if its name matches the regex.
-                            Name is from the last slash to the end. (filename.desktop)
+                            Name is from the last slash to the end. (e.g.: name.desktop)
                             Example: qr/^(?:gimp|xterm)\b/,    # skips 'gimp' and 'xterm'
 
     | skip_entry          : Skip a desktop file if the value from a given key matches the regex.
                             Example: [
-                                {key => 'Name', re => qr/(?:about|terminal)/i},
-                                {key => 'Exec', re => qr/^xterm/},
+                                {key => 'Name',       re => qr/(?:about|terminal)/i},
+                                {key => 'Exec',       re => qr/^xterm/},
+                                {key => 'OnlyShowIn', re => qr/XFCE/},
                             ],
 
-    | substitutions       : Substitute, by using a regex, in the values of the desktop files.
+    | substitutions       : Substitute, by using a regex, in the values from the desktop files.
                             Example: [
-                                {key => 'Exec', re => qr/xterm/, value => 'sakura'},
-                                {key => 'Exec', re => qr/\\\\/,  value => '\\', global => 1},    # for wine apps
+                                {key => 'Exec', re => qr/xterm/, value => 'sakura', global => 1},
                             ],
-
 
 || ICON SETTINGS
-    | icon_dirs_first     : When looking for icons, look in this directories first,
-                            before looking in the directories of the current icon theme.
-                            Example: [
-                                "$ENV{HOME}/My icons",
-                            ],
-
-    | icon_dirs_second    : Look in this directories after looked in the directories of the
-                            current icon theme. (Before /usr/share/pixmaps)
-                            Example: [
-                                "/usr/share/icons/gnome",
-                            ],
-
-    | icon_dirs_last      : Look in this directories at the very last, after looked in
-                            /usr/share/pixmaps, /usr/share/icons/hicolor and some other
-                            directories.
-                            Example: [
-                                "/usr/share/icons/Tango",
-                            ],
-
-    | strict_icon_dirs    : A true value will make the script to look only inside the directories
-                            specified by you in either one of the above three options.
-
     | gtk_rc_filename     : Absolute path to the GTK configuration file.
-    | missing_image       : Use this icon for missing icons (default: gtk-missing-image)
-
-
-|| KEYS
-    | name_keys           : Valid keys for application name.
-                            Example: ['Name[fr]', 'GenericName[fr]', 'Name'],   # french menu
-
+    | missing_icon        : Use this icon for missing icons (default: gtk-missing-image)
+    | icon_size           : Preferred size for icons. (default: 48)
+    | generic_fallback    : Try to shorten icon name at '-' characters before looking at inherited themes. (default: 0)
+    | force_icon_size     : Always get the icon scaled to the requested size. (default: 0)
 
 || PATHS
     | desktop_files_paths   : Absolute paths which contain .desktop files.
@@ -63,7 +37,6 @@
                                 "$ENV{HOME}/.local/share/applications",
                                 glob("$ENV{HOME}/.local/share/applications/wine/Programs/*"),
                               ],
-
 
 || NOTES
     | Regular expressions:
@@ -74,6 +47,10 @@
 
 our $CONFIG = {
   "editor"              => "geany",
+  "force_icon_size"     => 0,
+  "generic_fallback"    => 0,
+  "gtk_rc_filename"     => "$ENV{HOME}/.gtkrc-2.0",
+  "icon_size"           => 32,
   "Linux::DesktopFiles" => {
                              desktop_files_paths     => ["/usr/share/applications"],
                              gtk_rc_filename         => "$ENV{HOME}/.gtkrc-2.0",
@@ -90,8 +67,8 @@ our $CONFIG = {
                              terminalize             => 1,
                              unknown_category_key    => "other",
                            },
+  "locale_support"      => 1,
   "missing_icon"        => "gtk-missing-image",
-  "name_keys"           => ["Name"],
   "terminal"            => "urxvt",
-  "VERSION"             => 0.71,
+  "VERSION"             => 0.84,
 }
